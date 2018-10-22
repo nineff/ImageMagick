@@ -24,7 +24,7 @@
 %  You may not use this file except in compliance with the License.  You may  %
 %  obtain a copy of the License at                                            %
 %                                                                             %
-%    https://www.imagemagick.org/script/license.php                           %
+%    https://imagemagick.org/script/license.php                               %
 %                                                                             %
 %  Unless required by applicable law or agreed to in writing, software        %
 %  distributed under the License is distributed on an "AS IS" BASIS,          %
@@ -575,10 +575,12 @@ static void SVGStripString(const MagickBooleanType trim,char *message)
       {
         for ( ; *p != '\0'; p++)
           if ((*p == '*') && (*(p+1) == '/'))
-            break;
+            {
+              p+=2;
+              break;
+            }
         if (*p == '\0')
           break;
-        p+=2;
       }
     *q++=(*p);
   }
@@ -3086,7 +3088,7 @@ static void SVGExternalSubset(void *context,const xmlChar *name,
   Static declarations.
 */
 static char
-  SVGDensityGeometry[] = "72.0x72.0";
+  SVGDensityGeometry[] = "90.0x90.0";
 
 static Image *ReadSVGImage(const ImageInfo *image_info,ExceptionInfo *exception)
 {

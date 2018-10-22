@@ -24,7 +24,7 @@
 %  You may not use this file except in compliance with the License.  You may  %
 %  obtain a copy of the License at                                            %
 %                                                                             %
-%    https://www.imagemagick.org/script/license.php                           %
+%    https://imagemagick.org/script/license.php                               %
 %                                                                             %
 %  Unless required by applicable law or agreed to in writing, software        %
 %  distributed under the License is distributed on an "AS IS" BASIS,          %
@@ -2450,8 +2450,8 @@ static Image *ReadOnePNGImage(MngInfo *mng_info,
 #if (PNG_LIBPNG_VER >= 10401)
     option=GetImageOption(image_info,"png:chunk-malloc-max");
     if (option != (const char *) NULL)
-      png_set_chunk_malloc_max(ping,(png_alloc_size_t) MagickMin((ssize_t)
-        PNG_SIZE_MAX,StringToLong(option)));
+      png_set_chunk_malloc_max(ping,(png_alloc_size_t) MagickMin(PNG_SIZE_MAX,
+        (size_t) StringToLong(option)));
     else
       png_set_chunk_malloc_max(ping,(png_alloc_size_t) GetMaxMemoryRequest());
 #endif
@@ -8923,7 +8923,8 @@ static MagickBooleanType WriteOnePNGImage(MngInfo *mng_info,
   tried_333 = MagickFalse;
   tried_444 = MagickFalse;
 
-  image->depth=GetImageDepth(image,exception);
+  if (image->depth != GetImageDepth(image,exception))
+    (void) SetImageDepth(image,image->depth,exception);
   for (j=0; j<6; j++)
   {
     /*

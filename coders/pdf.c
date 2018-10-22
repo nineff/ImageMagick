@@ -23,7 +23,7 @@
 %  You may not use this file except in compliance with the License.  You may  %
 %  obtain a copy of the License at                                            %
 %                                                                             %
-%    https://www.imagemagick.org/script/license.php                           %
+%    https://imagemagick.org/script/license.php                               %
 %                                                                             %
 %  Unless required by applicable law or agreed to in writing, software        %
 %  distributed under the License is distributed on an "AS IS" BASIS,          %
@@ -273,10 +273,9 @@ static MagickBooleanType InvokePDFDelegate(const MagickBooleanType verbose,
           args_start,errors);
       else
         {
-          (void) ThrowMagickException(exception,GetMagickModule(),
-            DelegateError,"PDFDelegateFailed",
-            "`[ghostscript library %.2f]%s': %s",(double) revision.revision/
-            100.0,args_start,errors);
+          (void) ThrowMagickException(exception,GetMagickModule(),DelegateError,
+            "PDFDelegateFailed","`[ghostscript library %.2f]%s': %s",(double)
+            revision.revision/100.0,args_start,errors);
           if (errors != (char *) NULL)
             errors=DestroyString(errors);
           (void) LogMagickEvent(CoderEvent,GetMagickModule(),

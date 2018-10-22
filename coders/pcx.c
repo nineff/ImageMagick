@@ -23,7 +23,7 @@
 %  You may not use this file except in compliance with the License.  You may  %
 %  obtain a copy of the License at                                            %
 %                                                                             %
-%    https://www.imagemagick.org/script/license.php                           %
+%    https://imagemagick.org/script/license.php                               %
 %                                                                             %
 %  Unless required by applicable law or agreed to in writing, software        %
 %  distributed under the License is distributed on an "AS IS" BASIS,          %
@@ -983,7 +983,11 @@ static MagickBooleanType WritePCXImage(const ImageInfo *image_info,Image *image,
       }
     length=(((size_t) image->columns*pcx_info.bits_per_pixel+7)/8);
     if (length > 65535UL)
-      ThrowWriterException(ImageError,"WidthOrHeightExceedsLimit");
+      {
+        if (page_table != (MagickOffsetType *) NULL)
+          page_table=(MagickOffsetType *) RelinquishMagickMemory(page_table);
+        ThrowWriterException(ImageError,"WidthOrHeightExceedsLimit");
+      }
     pcx_info.bytes_per_line=(unsigned short) length;
     pcx_info.palette_info=1;
     pcx_info.colormap_signature=0x0c;

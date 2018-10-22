@@ -4,7 +4,7 @@
 #  You may not use this file except in compliance with the License.  You may
 #  obtain a copy of the License at
 #
-#    http://www.imagemagick.org/script/license.php
+#    https://imagemagick.org/script/license.php
 #
 #  Unless required by applicable law or agreed to in writing, software
 #  distributed under the License is distributed on an "AS IS" BASIS,
@@ -223,6 +223,140 @@ MAGICKCORE_CODER_SRCS = \
 	$(MAGICKCORE_WEBP_SRCS) \
 	$(MAGICKCORE_WMF_SRCS) \
 	$(MAGICKCORE_X11_SRCS)
+
+CODERS_NOINST_HDRS = \
+	coders/aai.h \
+	coders/art.h \
+	coders/avs.h \
+	coders/bgr.h \
+	coders/bmp.h \
+	coders/braille.h \
+	coders/cals.h \
+	coders/caption.h \
+	coders/cin.h \
+	coders/cip.h \
+	coders/clipboard.h \
+	coders/clip.h \
+	coders/cmyk.h \
+	coders/coders.h \
+	coders/coders-list.h \
+	coders/coders-private.h \
+	coders/cut.h \
+	coders/dcm.h \
+	coders/dds.h \
+	coders/debug.h \
+	coders/dib.h \
+	coders/djvu.h \
+	coders/dng.h \
+	coders/dot.h \
+	coders/dps.h \
+	coders/dpx.h \
+	coders/emf.h \
+	coders/ept.h \
+	coders/exr.h \
+	coders/fax.h \
+	coders/fits.h \
+	coders/flif.h \
+	coders/fpx.h \
+	coders/gif.h \
+	coders/gradient.h \
+	coders/gray.h \
+	coders/hald.h \
+	coders/hdr.h \
+	coders/heic.h \
+	coders/histogram.h \
+	coders/hrz.h \
+	coders/html.h \
+	coders/icon.h \
+	coders/info.h \
+	coders/inline.h \
+	coders/ipl.h \
+	coders/jbig.h \
+	coders/jnx.h \
+	coders/jp2.h \
+	coders/jpeg.h \
+	coders/json.h \
+	coders/label.h \
+	coders/mac.h \
+	coders/magick.h \
+	coders/map.h \
+	coders/mask.h \
+	coders/mat.h \
+	coders/matte.h \
+	coders/meta.h \
+	coders/miff.h \
+	coders/mono.h \
+	coders/mpc.h \
+	coders/mpeg.h \
+	coders/mpr.h \
+	coders/msl.h \
+	coders/mtv.h \
+	coders/mvg.h \
+	coders/null.h \
+	coders/otb.h \
+	coders/palm.h \
+	coders/pango.h \
+	coders/pattern.h \
+	coders/pcd.h \
+	coders/pcl.h \
+	coders/pcx.h \
+	coders/pdb.h \
+	coders/pdf.h \
+	coders/pes.h \
+	coders/pgx.h \
+	coders/pict.h \
+	coders/pix.h \
+	coders/plasma.h \
+	coders/png.h \
+	coders/pnm.h \
+	coders/ps2.h \
+	coders/ps3.h \
+	coders/psd.h \
+	coders/psd-private.h \
+	coders/ps.h \
+	coders/pwp.h \
+	coders/raw.h \
+	coders/rgb.h \
+	coders/rgf.h \
+	coders/rla.h \
+	coders/rle.h \
+	coders/screenshot.h \
+	coders/scr.h \
+	coders/sct.h \
+	coders/sfw.h \
+	coders/sgi.h \
+	coders/sixel.h \
+	coders/stegano.h \
+	coders/sun.h \
+	coders/svg.h \
+	coders/tga.h \
+	coders/thumbnail.h \
+	coders/tiff.h \
+	coders/tile.h \
+	coders/tim.h \
+	coders/ttf.h \
+	coders/txt.h \
+	coders/uil.h \
+	coders/url.h \
+	coders/uyvy.h \
+	coders/vicar.h \
+	coders/vid.h \
+	coders/viff.h \
+	coders/vips.h \
+	coders/wbmp.h \
+	coders/webp.h \
+	coders/wmf.h \
+	coders/wpg.h \
+	coders/xbm.h \
+	coders/xcf.h \
+	coders/xc.h \
+	coders/x.h \
+	coders/xpm.h \
+	coders/xps.h \
+	coders/xtrn.h \
+	coders/xwd.h \
+	coders/ycbcr.h \
+	coders/yuv.h 
 
 if WITH_MODULES
 coders_LTLIBRARIES = \
@@ -850,13 +984,13 @@ coders_ps_la_LIBADD        = $(MAGICKCORE_LIBS) $(GS_LIBS) $(MATH_LIBS)
 coders_ps2_la_SOURCES      = coders/ps2.c
 coders_ps2_la_CPPFLAGS     = $(MAGICK_CODER_CPPFLAGS)
 coders_ps2_la_LDFLAGS      = $(MODULECOMMONFLAGS)
-coders_ps2_la_LIBADD       = $(MAGICKCORE_LIBS) $(JBIG_LIBS) $(JPEG_LIBS) $(LZMA_LIBS) $(ZLIB_LIBS) $(MATH_LIBS)
+coders_ps2_la_LIBADD       = $(MAGICKCORE_LIBS) $(JBIG_LIBS) $(JPEG_LIBS) $(LZMA_LIBS) $(ZLIB_LIBS) $(ZSTD_LIBS) $(WEBPMUX_LIBS) $(WEBP_LIBS) $(MATH_LIBS)
 
 # PS3 coder module
 coders_ps3_la_SOURCES      = coders/ps3.c
 coders_ps3_la_CPPFLAGS     = $(MAGICK_CODER_CPPFLAGS)
 coders_ps3_la_LDFLAGS      = $(MODULECOMMONFLAGS)
-coders_ps3_la_LIBADD       = $(MAGICKCORE_LIBS) $(JBIG_LIBS) $(JPEG_LIBS) $(LZMA_LIBS) $(ZLIB_LIBS) $(MATH_LIBS)
+coders_ps3_la_LIBADD       = $(MAGICKCORE_LIBS) $(JBIG_LIBS) $(JPEG_LIBS) $(LZMA_LIBS) $(ZLIB_LIBS) $(ZSTD_LIBS) $(WEBPMUX_LIBS) $(WEBP_LIBS) $(MATH_LIBS)
 
 # PSD coder module
 coders_psd_la_SOURCES      = coders/psd.c coders/psd-private.h
@@ -964,7 +1098,7 @@ coders_thumbnail_la_LIBADD = $(MAGICKCORE_LIBS)
 coders_tiff_la_SOURCES     = coders/tiff.c coders/psd.c coders/psd-private.h
 coders_tiff_la_CPPFLAGS    = $(MAGICK_CODER_CPPFLAGS)
 coders_tiff_la_LDFLAGS     = $(MODULECOMMONFLAGS)
-coders_tiff_la_LIBADD      = $(MAGICKCORE_LIBS) $(TIFF_LIBS) $(JBIG_LIBS) $(JPEG_LIBS) $(LZMA_LIBS) $(ZLIB_LIBS) $(MATH_LIBS)
+coders_tiff_la_LIBADD      = $(MAGICKCORE_LIBS) $(TIFF_LIBS) $(JBIG_LIBS) $(JPEG_LIBS) $(LZMA_LIBS) $(ZLIB_LIBS) $(ZSTD_LIBS) $(WEBPMUX_LIBS) $(WEBP_LIBS) $(MATH_LIBS)
 
 # TILE coder module
 coders_tile_la_SOURCES     = coders/tile.c
